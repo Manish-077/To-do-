@@ -1,38 +1,69 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.MuiContainer-root {
+  background: rgba(255,255,255,0.95) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2) !important;
+  padding: 40px 24px !important;
+  margin-top: 48px !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.MuiTypography-h4 {
+  font-weight: 700 !important;
+  letter-spacing: 1px;
+  color: #7b4397 !important;
+  margin-bottom: 32px !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.MuiTextField-root {
+  background: #f3e9f7 !important;
+  border-radius: 8px !important;
 }
 
-.App-link {
-  color: #61dafb;
+.MuiButton-containedPrimary {
+  background: linear-gradient(90deg, #7b4397 0%, #dc2430 100%) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(220,36,48,0.15) !important;
+  border-radius: 8px !important;
+  transition: background 0.3s;
+}
+.MuiButton-containedPrimary:hover {
+  background: linear-gradient(90deg, #dc2430 0%, #7b4397 100%) !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MuiListItem-root {
+  transition: box-shadow 0.2s, transform 0.2s;
+  margin-bottom: 12px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(123,67,151,0.08);
+}
+.MuiListItem-root:hover {
+  box-shadow: 0 6px 18px rgba(123,67,151,0.18);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.MuiCheckbox-root {
+  color: #7b4397 !important;
+}
+
+.MuiDialog-paper {
+  border-radius: 18px !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #f3e9f7;
+}
+::-webkit-scrollbar-thumb {
+  background: #a18cd1;
+  border-radius: 8px;
 }
