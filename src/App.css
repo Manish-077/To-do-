@@ -1,69 +1,247 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-body, html, #root {
-  height: 100%;
+/* Reset and background */
+body, html, #root, .app-bg {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.MuiContainer-root {
-  background: rgba(255,255,255,0.95) !important;
-  border-radius: 24px !important;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2) !important;
-  padding: 40px 24px !important;
-  margin-top: 48px !important;
+.app-bg {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.MuiTypography-h4 {
-  font-weight: 700 !important;
-  letter-spacing: 1px;
-  color: #7b4397 !important;
-  margin-bottom: 32px !important;
+.todo-container {
+  background: rgba(255,255,255,0.95);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  padding: 40px 32px 32px 32px;
+  min-width: 340px;
+  max-width: 90vw;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: floatIn 0.8s cubic-bezier(.68,-0.55,.27,1.55);
 }
 
-.MuiTextField-root {
-  background: #f3e9f7 !important;
-  border-radius: 8px !important;
+@keyframes floatIn {
+  0% { transform: translateY(40px) scale(0.95); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
-.MuiButton-containedPrimary {
-  background: linear-gradient(90deg, #7b4397 0%, #dc2430 100%) !important;
-  color: #fff !important;
-  font-weight: 700 !important;
-  box-shadow: 0 2px 8px rgba(220,36,48,0.15) !important;
-  border-radius: 8px !important;
-  transition: background 0.3s;
+.todo-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
 }
-.MuiButton-containedPrimary:hover {
-  background: linear-gradient(90deg, #dc2430 0%, #7b4397 100%) !important;
+.todo-icon {
+  font-size: 2.2rem;
 }
-
-.MuiListItem-root {
-  transition: box-shadow 0.2s, transform 0.2s;
-  margin-bottom: 12px !important;
-  border-radius: 12px !important;
-  box-shadow: 0 2px 8px rgba(123,67,151,0.08);
-}
-.MuiListItem-root:hover {
-  box-shadow: 0 6px 18px rgba(123,67,151,0.18);
-  transform: translateY(-2px) scale(1.01);
+.todo-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #7b4397;
+  margin: 0;
 }
 
-.MuiCheckbox-root {
-  color: #7b4397 !important;
+.todo-input-row {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 24px;
 }
-
-.MuiDialog-paper {
-  border-radius: 18px !important;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
+.todo-input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1.5px solid #a18cd1;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
   background: #f3e9f7;
 }
-::-webkit-scrollbar-thumb {
-  background: #a18cd1;
+.todo-input:focus {
+  border: 1.5px solid #7b4397;
+}
+.add-btn {
+  background: linear-gradient(90deg, #7b4397 0%, #dc2430 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
   border-radius: 8px;
+  padding: 0 22px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(220,36,48,0.10);
+  transition: background 0.3s, transform 0.1s;
+}
+.add-btn:hover {
+  background: linear-gradient(90deg, #dc2430 0%, #7b4397 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.todo-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.todo-card {
+  background: #f3e9f7;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(123,67,151,0.08);
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 12px;
+  animation: fadeIn 0.5s;
+  position: relative;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.todo-checkbox {
+  accent-color: #7b4397;
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+}
+.todo-text {
+  flex: 1;
+  font-size: 1.08rem;
+  color: #4b306a;
+  word-break: break-word;
+}
+.delete-btn {
+  background: none;
+  border: none;
+  color: #dc2430;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.delete-btn:hover {
+  background: #ffe3e3;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #b39ddb;
+  margin-top: 24px;
+  animation: fadeIn 0.7s;
+}
+.empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  animation: twinkle 1.5s infinite alternate;
+}
+@keyframes twinkle {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  justify-content: center;
+}
+.filter-btn {
+  background: #f3e9f7;
+  border: 1.5px solid #a18cd1;
+  color: #7b4397;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: linear-gradient(90deg, #7b4397 0%, #dc2430 100%);
+  color: #fff;
+  border: 1.5px solid #7b4397;
+}
+
+.todo-card.completed .todo-text {
+  text-decoration: line-through;
+  color: #b39ddb;
+  opacity: 0.7;
+}
+
+.todo-edit-input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1.5px solid #a18cd1;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  background: #fff;
+  margin-right: 8px;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  color: #7b4397;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 4px;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.edit-btn:hover {
+  background: #ede7f6;
+}
+
+.skeleton-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.skeleton-card {
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #f3e9f7 25%, #e1bee7 50%, #f3e9f7 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s infinite linear;
+}
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (max-width: 500px) {
+  .todo-container {
+    min-width: 90vw;
+    padding: 24px 6vw 18px 6vw;
+  }
+  .todo-header h1 {
+    font-size: 1.3rem;
+  }
 }
