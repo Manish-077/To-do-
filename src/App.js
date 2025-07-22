@@ -93,14 +93,16 @@ function App() {
     setInputText('');
   }, [inputText, dispatch]);
 
+  // ✅ FIX: Wrap id in object for deleteTodo
   const onDeleteClick = useCallback((id) => {
-    dispatch(deleteTodo(id));
+    dispatch(deleteTodo({ id }));
   }, [dispatch]);
 
   const onToggleComplete = useCallback((id) => {
     dispatch(toggleComplete({ id }));
   }, [dispatch]);
 
+  // ✅ FIX: Pass text to reducer
   const onEditTodo = useCallback((id, text) => {
     dispatch(editTodo({ id, text }));
   }, [dispatch]);
